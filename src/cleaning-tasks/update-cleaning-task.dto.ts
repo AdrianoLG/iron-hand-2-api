@@ -1,14 +1,14 @@
 import { IsOptional } from 'class-validator';
 
-export class UpdateTodoDto {
+export class UpdateCleaningTaskDto {
   @IsOptional()
-  readonly completed: boolean;
+  readonly name: string;
 
   @IsOptional()
-  readonly task: string;
+  readonly places: Array<string>;
 
   @IsOptional()
-  readonly completedAt: Date;
+  readonly date: Date;
 
   readonly updatedAt: Date;
 }

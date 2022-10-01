@@ -17,13 +17,11 @@ export class TodosService {
   }
 
   async update(id: string, updateData: UpdateTodoDto) {
-    const updatedTodo = await (
-      await (
-        await this.todoModel.findByIdAndUpdate({ _id: id }, updateData, {
-          new: true,
-        })
-      ).populate('completed')
-    ).populate('task');
+    const updatedTodo = await this.todoModel
+      .findByIdAndUpdate({ _id: id }, updateData, {
+        new: true,
+      })
+      .populate(['completed', 'completedAt', 'task']);
     return updatedTodo;
   }
 

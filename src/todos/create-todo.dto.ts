@@ -5,4 +5,7 @@ export class CreateTodoDto {
   readonly completed: boolean;
   readonly task: string;
   readonly user: User;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+  readonly completedAt: Date;
 }

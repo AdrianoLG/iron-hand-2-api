@@ -2,22 +2,18 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Document } from 'mongoose';
 import { User } from '../users/user.schema';
-
-export type TodoDocument = Todo & Document;
+export type QuoteDocument = Quote & Document;
 
 @Schema({ timestamps: true })
-export class Todo {
-  @Prop({ default: false })
-  completed: boolean;
+export class Quote {
+  @Prop({ required: true })
+  quote: string;
 
-  @Prop()
-  task: string;
+  @Prop({ required: true })
+  author: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true })
   user: User;
-
-  @Prop()
-  completedAt: Date;
 
   @Prop({ default: Date.now })
   createdAt: Date;
@@ -26,4 +22,4 @@ export class Todo {
   updatedAt: Date;
 }
 
-export const TodoSchema = SchemaFactory.createForClass(Todo);
+export const QuoteSchema = SchemaFactory.createForClass(Quote);
